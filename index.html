@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <title>Hello, world!</title>
+    <style>
+        :root {
+            --white-color: #ffffff;
+            --black-color: #000000;
+            --orange-color: #f7941d;
+            --pink-color: #ff2c5d;
+            --green-color: #01d0b2;
+            --light-grey: #c2c4c3;
+            --footer-bg: #445060;
+        }
+
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            color: rgba(255, 255, 255, .75);
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .navbar-light .navbar-nav .nav-link.active,
+        .navbar-light .navbar-nav .show>.nav-link {
+            color: var(--black-color);
+        }
+
+        .navbar {
+            background-color: var(--white-color);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: var(--black-color);
+        }
+
+        .navbar .navbar-collapse .btn-outline-success {
+            border-radius: 50px;
+            padding: 10px 40px;
+        }
+
+        @media (max-width: 991.98px) {
+            .offcanvas-collapse {
+                position: fixed;
+                top: 90px;
+                /* Height of navbar */
+                bottom: 0;
+                left: 100%;
+                width: 100%;
+                padding-right: 1rem;
+                padding-left: 1rem;
+                overflow-y: auto;
+                visibility: hidden;
+                background-color: #343a40;
+                transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+            }
+
+            .offcanvas-collapse.open {
+                visibility: visible;
+                transform: translateX(-100%);
+            }
+
+            .navbar-light .navbar-nav .nav-link.active,
+            .navbar-light .navbar-nav .show>.nav-link {
+                color: var(--white-color) !important;
+            }
+
+            .navbar-light .navbar-nav .nav-link {
+                color: var(--white-color) !important;
+            }
+
+            .navbar .navbar-collapse .btn-outline-success {
+                padding: 5px 10px;
+                border-color: var(--white-color);
+                color: var(--white-color);
+                background-color: var(--orange-color);
+            }
+        }
+
+        #carouselExampleCaptions {
+            margin-top: 97px;
+        }
+
+        .title-section .underline {
+            border-bottom: 5px solid var(--green-color);
+            width: 10%;
+            margin: auto;
+        }
+
+        .title-section .heading h1 {
+            color: var(--pink-color);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .title-section .sub-heading h5 {
+            color: var(--light-grey);
+        }
+
+        /* service-section */
+
+        .card {
+            border: none;
+            background-color: transparent;
+        }
+
+        .service-section .card img {
+            width: 40%;
+        }
+
+        .card-body {
+            padding: 1rem 2rem 1rem 0;
+        }
+
+        .service-section .card .card-body .card-title {
+            color: var(--pink-color);
+            font-weight: 600;
+        }
+
+        /* our-teams */
+        .our-teams-content .card-img-top {
+            border-radius: 30px;
+        }
+
+        .our-teams-content h5 {
+            color: var(--pink-color);
+            font-weight: 600;
+            margin-bottom: 0px;
+            font-size: 1.2rem;
+        }
+
+        .our-teams-content small {
+            text-transform: uppercase;
+            color: var(--green-color);
+        }
+
+        .our-teams .btn-primary {
+            background-color: var(--green-color);
+            border-color: var(--green-color);
+        }
+
+        .our-teams .btn-primary:hover {
+            background-color: var(--pink-color);
+            border-color: var(--pink-color);
+        }
+
+        /* testmonials */
+
+        .testimonials-content .card .card-body .fas {
+            color: var(--green-color);
+            font-size: 2rem;
+        }
+
+        .testimonials-content .card .card-body h5 {
+            font-weight: 600;
+            color: #6e7c85;
+            font-size: 1.8rem;
+        }
+
+        .underline {
+            border-bottom: 5px solid var(--green-color);
+            width: 25%;
+            margin: 20px 0;
+        }
+
+        .client-review .client-img img {
+            border-radius: 100%;
+            width: 75px;
+            height: auto;
+        }
+
+        @media (max-width: 576px) {
+            .client-review .client-img img {
+                width: 50px;
+            }
+        }
+
+        .client-name {
+            padding-left: 1.5rem;
+            align-self: center;
+
+        }
+
+        .client-name h3 {
+            margin-bottom: 0px;
+            font-weight: 600;
+            color: #4d5153;
+        }
+
+        .client-name small {
+            color: #6e7c85;
+        }
+
+        /* footer */
+        .footer-bg {
+            background-color: #445060;
+        }
+
+        .footer-xid h5 {
+            color: var(--white-color);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .footer-xid .text-muted {
+            color: var(--white-color) !important;
+        }
+
+        .footer-details h5 {
+            color: var(--white-color);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .footer-details p {
+            color: var(--white-color);
+        }
+
+        /* mansory-section */
+
+        .our-projects-sections .mansory-col-one .col-one-imgone {
+            height: 522px;
+            border-radius: 10px;
+        }
+
+        .col-two-imgone {
+            height: 385px;
+            border-radius: 10px;
+        }
+
+        .our-projects-sections .mansory-col-three .col-one-imgone {
+            height: 790px;
+            border-radius: 10px;
+        }
+
+        /* slider */
+
+        #carouselhomepage .carousel-inner .carousel-item .overlay_color {
+            background-color: #ffffff;
+            z-index: -1;
+        }
+
+        #carouselhomepage .carousel-inner .carousel-item .carousel-caption {
+            position: relative !important;
+            right: 0;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        #carouselhomepage .carousel-inner .carousel-item .carousel-caption .slider-button {
+            padding: 1rem 0;
+        }
+
+        #carouselhomepage .carousel-inner .carousel-item .carousel-caption .slider-button .btn-outline-secondary {
+            color: #ffffff;
+            border: none;
+            border-radius: 0.5rem !important;
+            padding: .5rem 1.5rem !important;
+            background: linear-gradient(to bottom, #fd6861 0%, #fdba63 100%);
+            font-size: 1.5rem;
+        }
+
+        #carouselhomepage .container .slider-content h1 {
+            color: var(--pink-color);
+            font-weight: 600;
+        }
+
+        #carouselhomepage .container .slider-content p {
+            color: var(--black-color);
+        }
+
+        #carouselhomepage .carousel-inner .carousel-item .carousel-caption .slider-button :hover {
+            -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.38), 0 6px 20px 0 rgba(0, 0, 0, 0.39);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.38), 0 6px 20px 0 rgba(0, 0, 0, 0.39);
+            -webkit-transform: translate3d(0, -3px, 0);
+            transform: translate3d(0, -3px, 0);
+        }
+
+        #carouselhomepage .carousel-inner .carousel-item .slider_bg_image {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        #carouselhomepage .carousel-inner .carousel-item img {
+            width: 100%;
+        }
+
+        .carousel-control-prev-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ddd' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+        }
+
+        .carousel-control-next-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ddd' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+        }
+
+        #carouselhomepage .carousel-control-next,
+        #carouselhomepage .carousel-control-prev {
+            z-index: 99;
+            width: 5%;
+        }
+
+        #carouselhomepage .carousel-control-next-icon,
+        #carouselhomepage .carousel-control-prev-icon {
+            width: 10rem;
+            height: 10rem;
+        }
+
+        @media screen and (max-width: 767.98px) {
+            #carouselhomepage .container {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -ms-flex-flow: column;
+                flex-flow: column;
+            }
+
+            #carouselhomepage .container .slider-content {
+                -webkit-box-ordinal-group: 3;
+                -ms-flex-order: 2;
+                order: 2;
+                padding: 2rem 0;
+            }
+
+            #carouselhomepage .container .slider_image {
+                -webkit-box-ordinal-group: 2;
+                -ms-flex-order: 1;
+                order: 1;
+                padding: 2rem 0;
+            }
+
+            #carouselhomepage .carousel-control-next-icon,
+            #carouselhomepage .carousel-control-prev-icon {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        #carouselhomepage {
+            margin-top: 97px;
+        }
+
+        /* our-projects-sections */
+
+        .our-projects-sections img,
+        .our-projects-sections .card {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="/XID/Images/xidlogo.webp" style="width: 150px;"></a>
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse offcanvas-collapse " id="navbarsExampleDefault">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 pl-4">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Careers</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <button class="btn btn-outline-success" type="submit">Contact</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- slider-section -->
+    <div id="carouselhomepage" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="carousel-caption slider_bg_image">
+                    <div class="overlay_color">
+                        <div class="container d-md-flex align-items-center text-start">
+                            <div class="col-md-6 slider_image">
+                                <img class="p-5" src="/XID/Images/Asset 4@900x.png">
+                            </div>
+                            <div class="col-md-6 slider-content">
+                                <h1 class="pb-4">Application Development</h1>
+                                <p>Some representative placeholder content for the first slide.Some representative
+                                    placeholder content
+                                    for
+                                    the first slide.
+                                    Some representative placeholder content for the first slide.Some representative
+                                    placeholder content
+                                    for
+                                    the first slide</p>
+                                <div class="slider-button">
+                                    <a type="button" class="btn btn-outline-secondary m-2" href="#">Get Started</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-caption slider_bg_image">
+                    <div class="overlay_color">
+                        <div class="container d-md-flex align-items-center text-start">
+                            <div class="col-md-6 slider_image">
+                                <img class="p-5" src="/XID/Images/Asset 4@900x.png">
+                            </div>
+                            <div class="col-md-6 slider-content">
+                                <h1 class="pb-4">Application Development</h1>
+                                <p>Some representative placeholder content for the first slide.Some representative
+                                    placeholder content
+                                    for
+                                    the first slide.
+                                    Some representative placeholder content for the first slide.Some representative
+                                    placeholder content
+                                    for
+                                    the first slide</p>
+                                <div class="slider-button">
+                                    <a type="button" class="btn btn-outline-secondary m-2" href="#">Get Started</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselhomepage" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselhomepage" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- services-section -->
+    <div class="container service-section py-4">
+        <div class="title-section text-center">
+            <div class="heading">
+                <h1>Services</h1>
+            </div>
+            <div class="underline my-3"></div>
+            <div class="sub-heading pt-2">
+                <h5>We create new quality valued digital products everyday</h5>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card">
+                    <img src="/XID/Images/Asset 1@900x.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Application Development</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="/XID/Images/Asset 1@900x.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Web Development</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="/XID/Images/Asset 1@900x.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Content Management</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="/XID/Images/Asset 1@900x.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">User Experience Design</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="/XID/Images/Asset 1@900x.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">User Interface Design</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="/XID/Images/Asset 1@900x.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Ecommerce</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="/XID/Images/Asset 1@900x.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Digital Marketing</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="/XID/Images/Asset 1@900x.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Branding </h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="/XID/Images/Asset 1@900x.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Application Development</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- our-projects-sections -->
+    <div class="bg-light">
+        <div class="container py-5">
+            <div class="title-section text-center">
+                <div class="heading">
+                    <h1>Our Projects</h1>
+                </div>
+                <div class="underline my-3"></div>
+                <div class="sub-heading pt-2">
+                    <h5>We create new quality digital products everyday.</h5>
+                </div>
+            </div>
+            <div class="our-projects-sections row pt-4" data-masonry='{"percentPosition": true }'>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card">
+                        <img width="100%" height="500" src="/XID/Images/4976768.jpg" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card bg-primary text-white text-center p-3">
+                        <figure class="mb-0">
+                            <blockquote class="blockquote">
+                                <p>A well-known quote, contained in a blockquote element.</p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer mb-0 text-white">
+                                Someone famous in <cite title="Source Title">Source Title</cite>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card bg-primary text-white text-center p-3">
+                        <figure class="mb-0">
+                            <blockquote class="blockquote">
+                                <p>A well-known quote, contained in a blockquote element.</p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer mb-0 text-white">
+                                Someone famous in <cite title="Source Title">Source Title</cite>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card">
+                        <img width="100%" height="360" src="/XID/Images/4893415.jpg" style="object-fit: cover;">
+
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card">
+                        <img width="100%" height="745" src="/XID/Images/500X800.jpg" style="object-fit: cover;">
+                    </div>
+                </div>
+
+                <div class=" col-sm-6 col-lg-4 mb-4">
+                    <div class="card">
+                        <img width="100%" height="360" src="/XID/Images/4976768.jpg" style="object-fit: cover;">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card">
+                        <img width="100%" height="360" src="/XID/Images/26964.jpg" style="object-fit: cover;">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- our-team-section -->
+    <div class="container py-4">
+        <div class="title-section text-center">
+            <div class="heading">
+                <h1>Our team</h1>
+            </div>
+            <div class="underline my-3"></div>
+            <div class="sub-heading pt-2">
+                <h5>We are here to make succeed.</h5>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4 py-4">
+            <div class="col our-teams-content">
+                <div class="card">
+                    <img src="/XID/Images/human.jpg" class="card-img-top" alt="...">
+                    <div class="text-center pt-2">
+                        <h5>Rajesh Nair</h5>
+                        <small>lead designer</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col our-teams-content">
+                <div class="card">
+                    <img src="/XID/Images/human.jpg" class="card-img-top" alt="...">
+                    <div class="text-center pt-2">
+                        <h5>Thomas</h5>
+                        <small>lead developer</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col our-teams-content">
+                <div class="card">
+                    <img src="/XID/Images/human.jpg" class="card-img-top" alt="...">
+                    <div class="text-center pt-2">
+                        <h5>Lakshmi</h5>
+                        <small>Head of Sales</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- work-with-us-section -->
+    <div class="bg-light our-teams">
+        <div class="container py-5">
+            <div class="title-section text-center">
+                <div class="heading">
+                    <h1>Work with us</h1>
+                </div>
+                <div class="underline my-3"></div>
+            </div>
+            <div class="px-4 ">
+                <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                    <div class="col-10 col-sm-8 col-lg-6">
+                        <img src="/XID/Images/Asset 2@900x.png" class="d-block mx-lg-auto img-fluid"
+                            alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                    </div>
+                    <div class="col-lg-6">
+                        <h1 class="display-5 fw-bold lh-1 mb-3">Responsive left-aligned hero with image</h1>
+                        <p>Quickly design and customize responsive mobile-first sites with Bootstrap, the
+                            world’s most popular front-end open source toolkit, featuring Sass variables and mixins,
+                            responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
+                        </p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                            <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Know More</button>
+                            <button type="button" class="btn btn-outline-secondary btn-lg px-4">Reach Us</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- testimonials-content -->
+    <div class="container py-5">
+        <div class="title-section text-center">
+            <div class="heading">
+                <h1>Our team</h1>
+            </div>
+            <div class="underline my-3"></div>
+            <div class="sub-heading pt-2">
+                <h5>We are here to make succeed.</h5>
+            </div>
+        </div>
+        <div class="testimonials">
+            <div class="row row-cols-md-2 py-4">
+                <div class="col testimonials-content pe-md-5">
+                    <div class="card">
+                        <div class="card-body ">
+                            <div class="text-end">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                            <h5 class="card-title">Finely designed products that will increase your customer
+                                engagement
+                            </h5>
+                            <div class="underline"></div>
+                            <p>This is a longer card with supporting text below as a natural lead-in
+                                to additional content. This content is a little bit longer.
+                                This is a longer card with supporting text below as a natural lead-in
+                                to additional content. This content is a little bit longer.
+                                This is a longer card with supporting text below as a natural lead-in
+                                to additional content. This content is a little bit longer.
+                            </p>
+                            <div class="client-review d-flex">
+                                <div class="client-img">
+                                    <img src="Images/stamp_list_image.jpg">
+                                </div>
+                                <div class="client-name d-block">
+                                    <h3>Joshua</h3>
+                                    <small>manager at infinite</small>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col testimonials-content pe-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text-end">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                            <h5 class="card-title">Finely designed products that will increase your customer
+                                engagement
+                            </h5>
+                            <div class="underline"></div>
+                            <p>This is a longer card with supporting text below as a natural lead-in
+                                to additional content. This content is a little bit longer.
+                                This is a longer card with supporting text below as a natural lead-in
+                                to additional content. This content is a little bit longer.
+                                This is a longer card with supporting text below as a natural lead-in
+                                to additional content. This content is a little bit longer.
+                            </p>
+                            <div class="client-review d-flex">
+                                <div class="client-img">
+                                    <img src="Images/stamp_list_image.jpg">
+                                </div>
+                                <div class="client-name d-block">
+                                    <h3>Joshua</h3>
+                                    <small>manager at infinite</small>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer-section -->
+    <div class="footer-bg">
+        <div class="container ">
+            <footer class="py-4">
+                <div class="row footer-xid">
+                    <div class="col-sm-4  col-md-3 sm-align-items-center py-2">
+                        <h5>services</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Application
+                                    Development</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Web
+                                    Development</a>
+                            </li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Content
+                                    Management</a>
+                            </li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">User Experience
+                                    Design</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">User Interface
+                                    Design</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Ecommerce </a>
+                            </li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Digital
+                                    Marketing</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class=" col-sm-2 py-2">
+                        <h5>Company</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4 offset-md-3 footer-details py-2">
+                        <form>
+                            <img src="/XID/Images/xidlogo.webp" style="width: 30%;">
+                            <h5 class="pt-2">xid digital solutions pvt ltd</h5>
+                            <p>10/5, Nathamuni st, parathasarathi puram<br>
+                                T.Nagar, Chennai<br>
+                                Tamil Nadu 6000017,
+                                India<br>
+                                Phone: +91 97890 86005<br>
+                                Email: Interact@xiddigital.com
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        (function () {
+            'use strict'
+
+            document.querySelector('#navbarSideCollapse').addEventListener('click', function () {
+                document.querySelector('.offcanvas-collapse').classList.toggle('open')
+            })
+        })()
+
+    </script>
+    <!-- Optional JavaScript; choose one of the two! -->
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"
+        async></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
